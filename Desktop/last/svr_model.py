@@ -10,6 +10,8 @@ df = pd.read_excel("rafmdata.xlsx")
 df.head()
 # Looking at the features' names: 
 df.columns
+# Replace the NaN (missing values) with zero (0) :
+df = df.fillna(value = 0)
 # Removing non useful features for stated reasons in report: 
 #This include Mo,Nb,P,S,Al,O,Zr,Y,NT,Nt,Ni
 
