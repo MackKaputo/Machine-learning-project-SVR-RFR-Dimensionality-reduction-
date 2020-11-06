@@ -141,3 +141,10 @@ plt.title("SVM Regressor Loss function (Negative mean squared error)", fontsize=
 plt.xlabel("Training Set Size", fontsize=15)
 plt.ylabel("Negative Mean Squared Error",fontsize=15)
 #plt.savefig("SVR_PCA_loss_function_RMSE_negative",dpi=300)
+
+plt.figure(figsize = (10,7))
+plt.plot(range(1,2500),my_errors)
+plt.xlabel("Hyperparameter (C)", fontsize = 15)
+plt.ylabel("Mean absolute error", fontsize = 15)
+plt.title("Hyperparameter (C) Search with Mean Absolute Error", fontsize = 20)
+plt.savefig("svm_PCA_Hyperparameter.png", dpi=300)
