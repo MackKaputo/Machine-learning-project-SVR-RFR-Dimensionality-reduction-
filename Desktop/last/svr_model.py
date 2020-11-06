@@ -67,7 +67,7 @@ X_train_std = sc.fit_transform(X_train)
 X_test_std = sc.transform(X_test)
 X_std = sc.fit_transform(X)
 
-#initialize PCA and linear regression model
+#initialize PCA and svm regression model
 pca = PCA(n_components = 3)
 X_train_pca = pca.fit_transform(X_train_std)
 X_test_pca = pca.transform(X_test_std)
@@ -162,7 +162,7 @@ X_train_std = sc.fit_transform(X_train)
 X_test_std = sc.transform(X_test)
 X_std = sc.fit_transform(X)
 
-#initialize PCA and linear regression model
+#initialize PCA and svm new regression model
 pca = PCA(n_components = 12)
 X_train_pca = pca.fit_transform(X_train_std)
 X_test_pca = pca.transform(X_test_std)
