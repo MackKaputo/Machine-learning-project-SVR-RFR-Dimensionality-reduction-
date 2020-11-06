@@ -148,3 +148,22 @@ plt.xlabel("Hyperparameter (C)", fontsize = 15)
 plt.ylabel("Mean absolute error", fontsize = 15)
 plt.title("Hyperparameter (C) Search with Mean Absolute Error", fontsize = 20)
 plt.savefig("svm_PCA_Hyperparameter.png", dpi=300)
+
+X_train_std = sc.fit_transform(X_train)
+X_test_std = sc.transform(X_test)
+X_std = sc.fit_transform(X)
+
+#initialize PCA and linear regression model
+pca = PCA(n_components = 12)
+X_train_pca = pca.fit_transform(X_train_std)
+X_test_pca = pca.transform(X_test_std)
+X_pca = pca.transform(X_std)
+
+
+svr_mod = SVR(gamma = 'auto', kernel="rbf", epsilon=25, C=391)
+svr_mod.fit(X_train_pca, y_train)
+predictions_svr = svr_mod.predict(X_test_pca)
+
+MAE_svr = metrics.mean_absolute_error(y_test, predictions_svr)
+MSE_svr = metrics.mean_squared_error(y_test, predictions_svr)
+RMSE_svr = np.sqrt(metrics.mean_squared_error(y_test, predictions_svr))
