@@ -46,6 +46,13 @@ df = pd.read_csv("rafm_data_preprocessed.csv")
 # Split test and training
 X = df[['C','Cr','Mn','Si','W','V','Ta','Ti','N','B','TT','Tt(min)']]
 y = df['YS']
+#Plotting the correlation Headmap
+
+heatmap_figure = plt.figure(figsize = (11,7))
+plt.title("Correlation Matrix Heatmap", fontsize = 25)
+sns.heatmap(correlation_matrix,cmap='Reds',annot=True)
+heatmap_figure.savefig("correlation_matrix.png", dpi=300)
+
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=55)
 
 #standardize the features 
@@ -148,6 +155,8 @@ plt.xlabel("Hyperparameter (C)", fontsize = 15)
 plt.ylabel("Mean absolute error", fontsize = 15)
 plt.title("Hyperparameter (C) Search with Mean Absolute Error", fontsize = 20)
 plt.savefig("svm_PCA_Hyperparameter.png", dpi=300)
+
+
 
 X_train_std = sc.fit_transform(X_train)
 X_test_std = sc.transform(X_test)
