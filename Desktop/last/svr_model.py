@@ -170,7 +170,7 @@ X_train_pca = pca.fit_transform(X_train_std)
 X_test_pca = pca.transform(X_test_std)
 X_pca = pca.transform(X_std)
 
-
+#Final model parameters
 svr_mod = SVR(gamma = 'auto', kernel="rbf", epsilon=25, C=391)
 svr_mod.fit(X_train_pca, y_train)
 predictions_svr = svr_mod.predict(X_test_pca)
